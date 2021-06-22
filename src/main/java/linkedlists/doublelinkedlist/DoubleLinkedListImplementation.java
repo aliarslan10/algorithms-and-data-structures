@@ -16,6 +16,7 @@ public class DoubleLinkedListImplementation {
 class Node {
     Object value;
     Node next;
+    Node previous;
 
     public Node(Object value, Node next) {
         this.value = value;
@@ -35,12 +36,14 @@ class MyLinkedList<T> {
         Node newNode = new Node(value, null);
         if (head != null) {
             newNode.next = head;
+            head.previous = newNode;
         }
         head = newNode;
     }
 
     public void removeLastAdded() {
         head = head.next;
+        head.previous = null;
     }
 
     public void print() {
